@@ -17,7 +17,7 @@ const Test = () => {
         <div className='flex flex-col justify-start'>
             
                 <h4>Tittel</h4>
-                <p>Vi seter stor pris på a t du kønsker å komme i kontakt. Bla bla bla. gpoimdgpodmsfpg . imdgpfiosgpsdfjogpsdifjogpsdfogmpsdfogdspfogm</p>
+                <p>Vi seter stor pris på at du kønsker å komme i kontakt. Bla bla bla. gpoimdgpodmsfpg . imdgpfiosgpsdfjogpsdifjogpsdfogmpsdfogdspfogm</p>
                 <button>Les mer</button>
             
         </div>
