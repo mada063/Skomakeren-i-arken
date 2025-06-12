@@ -54,11 +54,15 @@ const TextSection = () => {
             </div>
             ))}
         </div>
-        <a href="https://www.skomakeren.no/" className='mt-8'>
-            <button className='bg-custom-blue text-white px-6 py-3 rounded-lg transition-all duration-300 hover:bg-opacity-80 hover:scale-105 hover:shadow-lg'>
-                Lær mer
-            </button>
-        </a>
+        <div className="mt-8 flex justify-center md:justify-start">
+  <a
+    href="https://www.skomakeren.no/"
+    className="bg-custom-blue text-white px-6 py-3 rounded-lg transition-all duration-300 hover:bg-opacity-80 hover:scale-105 hover:shadow-lg w-fit"
+  >
+    Lær mer
+  </a>
+</div>
+
       </div>
     </div>
   )
