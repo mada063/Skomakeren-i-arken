@@ -1,9 +1,9 @@
-import TextSection from "@/components/TextSection";
+import NoklerLanding from "./components/NoklerLanding";
 
 export default function Nokler() {
     return (
         <div>
-            <TextSection />
+            <NoklerLanding />
         </div>
     )
 }

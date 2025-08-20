@@ -1,9 +1,13 @@
-import TextSection from "@/components/TextSection";
+import BilNoklerLanding from "./components/BilNoklerLanding";
+import CarKeyService from "./components/CarKeyService";
 
 export default function BilNokler() {
     return (
         <div>
-            <TextSection />
+            <BilNoklerLanding />
+            <div id="services">
+                <CarKeyService />
+            </div>
         </div>
     )
 }

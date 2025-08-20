@@ -1,11 +1,13 @@
-import TextSection from "@/components/TextSection";
+import SkoLanding from "./components/SkoLanding";
 import ShoeService from "./components/ShoeService";
 
 export default function Sko() {
     return (
         <div>
-            <TextSection />
-            <ShoeService />
+            <SkoLanding />
+            <div id="services">
+                <ShoeService />
+            </div>
         </div>
     )
 }

@@ -1,6 +1,9 @@
 import Header from '@/components/Header';
 import './globals.css';
 import { Cormorant_Garamond, Inter } from 'next/font/google';
+import { ReactNode } from 'react';
+import Footer from '@/components/Footer';
+import { AuthProvider } from '@/contexts/AuthContext';
 
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ['latin'],
@@ -20,16 +23,15 @@ export const metadata = {
   description: 'Using Cormorant Garamond',
 };
 
-import { ReactNode } from 'react';
-import Footer from '@/components/Footer';
-
 export default function RootLayout ({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${cormorantGaramond.variable}`}>
       <body className=''>
-        <Header />
-        {children}
-        <Footer />
+        <AuthProvider>
+          <Header />
+          {children}
+          <Footer />
+        </AuthProvider>
         </body>
     </html>
   );

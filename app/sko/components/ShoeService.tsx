@@ -1,4 +1,5 @@
 import React from 'react'
+import EditableText from '@/components/EditableText'
 
 type Service = {
     name: string;
@@ -34,24 +35,32 @@ const services: Service[] = [
 
 const ShoeService = () => {
   return (
-    <div className='max-w-7xl mx-auto'>
-        <h2 className="text-5xl md:text-7xl uppercase font-semibold">Våre tjenester</h2>
-        <table className="w-full border-collapse">
-        <thead>
-          <tr className="text-left border-b-2">
-            <th className="py-2">Tjeneste</th>
-            <th className="py-2">Pris</th>
-          </tr>
-        </thead>
-        <tbody>
-          {services.map((service, index) => (
-            <tr key={index} className="border-b hover:bg-gray-50">
-              <td className="py-2">{service.name}</td>
-              <td className="py-2">{service.price}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className='max-w-7xl mx-auto flex flex-col items-center'>
+        <EditableText 
+          id="sko-title"
+          defaultText="Våre tjenester"
+          className="text-5xl md:text-7xl uppercase font-semibold mb-12"
+          tag="h2"
+          page="sko"
+        />
+        <div className="w-1/2">
+          <table className="w-full border-collapse">
+            <thead>
+              <tr className="text-left border-b-2">
+                <th className="py-2">Tjeneste</th>
+                <th className="py-2">Pris</th>
+              </tr>
+            </thead>
+            <tbody>
+              {services.map((service, index) => (
+                <tr key={index} className="border-b hover:bg-gray-50">
+                  <td className="py-2">{service.name}</td>
+                  <td className="py-2">{service.price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
     </div>
   )
 }
