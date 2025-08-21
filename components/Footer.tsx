@@ -7,7 +7,7 @@ const Footer = () => {
         
         {/* Logo & Contact Info */}
         <div className="flex flex-col text-left">
-          <img src="/images/Logo.png" alt="Logo" className="w-32 h-auto mb-4" />
+          <img src="/images/logo_hvit.png" alt="Logo" className="w-32 h-auto -ml-6 mb-4" />
           <h2 className="font-semibold text-lg">SKOMAKEREN I ARKEN v/Helshani</h2>
           <p>Org. nummer: 988 846 236</p>
           <p>
@@ -20,8 +20,8 @@ const Footer = () => {
 
         {/* Meny Section */}
         <div className="flex flex-col text-left">
-          <h4 className="font-semibold text-lg mb-3">Meny</h4>
-          <ul className="space-y-2">
+          <h4 className="font-semibold text-lg mb-3 uppercase">Meny</h4>
+          <ul className="space-y-2 ">
             <li><a href="/kontakt" className="underline hover:text-gray-300">Kontakt oss</a></li>
             <li><a href="/apningstider" className="underline hover:text-gray-300">Åpningstider</a></li>
             <li><a href="/sko" className="underline hover:text-gray-300">Sko</a></li>
@@ -33,9 +33,9 @@ const Footer = () => {
 
         {/* Useful Section */}
         <div className="flex flex-col text-left">
-          <h4 className="font-semibold text-lg mb-3">Nyttige</h4>
+          <h4 className="font-semibold text-lg mb-3 uppercase">Nyttige</h4>
           <ul className="space-y-2">
-            <li><a href="/eksempeler" className="underline hover:text-gray-300">Eksempeler</a></li>
+            <li><a href="/eksempler" className="underline hover:text-gray-300">Eksempler</a></li>
             <li><a href="/login" className="underline hover:text-gray-300">Logg inn</a></li>
           </ul>
         </div>

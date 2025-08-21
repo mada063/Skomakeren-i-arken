@@ -1,6 +1,7 @@
 export default function LandingHero() {
   return (
     <div
+      id="hero-section"
       className="min-h-screen bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: "url('/images/skomaker.jpg')" }}
     >
