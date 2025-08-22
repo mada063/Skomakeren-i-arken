@@ -42,9 +42,9 @@ const Editor = () => {
         const data = contentSnap.data()
         setContents(data.contents || [])
       } else {
-        // Initialize with default content
+        // Initialiserer med standardinnhold
         const defaultContents: EditableContent[] = [
-          // Home page content
+          // Hjemmeside-innhold
           {
             id: 'hero-title',
             title: 'Hero Title',
@@ -57,7 +57,7 @@ const Editor = () => {
             content: 'Din lokale skomaker og nøkkelmaker',
             page: 'home'
           },
-          // Sko page content
+          // Sko-side innhold
           {
             id: 'sko-title',
             title: 'Sko Page Title',
@@ -82,7 +82,7 @@ const Editor = () => {
             content: 'Vi tilbyr førsteklasses skoreparasjon for alle typer sko. Bærekraftig, raskt og pålitelig.',
             page: 'sko'
           },
-          // Bil-nokler page content
+          // Bil-nøkkel side innhold
           {
             id: 'bilnokler-title',
             title: 'Bilnøkkler Page Title',
@@ -107,7 +107,7 @@ const Editor = () => {
             content: 'Vi programmerer og kopierer bilnøkler for alle merker. Rask service og kvalitetsgaranti.',
             page: 'bil-nokler'
           },
-          // Nokler page content
+          // Nøkkel side innhold
           {
             id: 'nokler-landing-title',
             title: 'Nokler Landing Title',
@@ -126,7 +126,7 @@ const Editor = () => {
             content: 'Trenger du en ekstranøkkel? Vi kopierer raskt og presist med kvalitetsgaranti.',
             page: 'nokler'
           },
-          // Skilt page content
+          // Skilt side innhold
           {
             id: 'skilt-landing-title',
             title: 'Skilt Landing Title',

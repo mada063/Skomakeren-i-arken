@@ -23,12 +23,12 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Close menu when pathname changes
+  // Lukker menyen når pathname endres
   useEffect(() => {
     setIsMenuOpen(false)
   }, [pathname])
 
-  // Determine if we should show black logo/menu
+  // Bestemmer om vi skal vise svart logo/meny. må muligens endres til gråfarge
   const isHomePage = pathname === '/'
   const shouldShowBlack = !isHomePage || isScrolled
 

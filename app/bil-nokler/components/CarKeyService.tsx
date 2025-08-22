@@ -3,32 +3,31 @@
 import React, { useState } from 'react'
 import EditableText from '@/components/EditableText'
 
-type CarKeyService = {
-    name: string;
-    price: string;
-    description?: string;
+// Definerer bil
+type Car = {
+    id: string;
+    brand: string;
+    model: string;
+    years: number[];
+    keyTypes: string[];
 };
-
-const carKeyServices: CarKeyService[] = [
-  { name: 'Ny bilnøkkel', price: 'Fra 800,- kr', description: 'Programmering av ny bilnøkkel' },
-  { name: 'Kopiering av bilnøkkel', price: 'Fra 400,- kr', description: 'Kopiering av eksisterende nøkkel' },
-  { name: 'Reparasjon av bilnøkkel', price: 'Fra 200,- kr', description: 'Reparasjon av skadet nøkkel' },
-  { name: 'Batteriskifte', price: '50,- kr', description: 'Skifte av batteri i bilnøkkel' },
-  { name: 'Fjernlåsing av bilnøkkel', price: 'Fra 300,- kr', description: 'Fjernlåsing av nøkkel' },
-  { name: 'Programmering av fjernkontroll', price: 'Fra 250,- kr', description: 'Programmering av fjernkontroll til bil' },
-  { name: 'Ny fjernkontroll', price: 'Fra 600,- kr', description: 'Ny fjernkontroll til bil' },
-  { name: 'Reparasjon av fjernkontroll', price: 'Fra 150,- kr', description: 'Reparasjon av skadet fjernkontroll' },
-  { name: 'Kopiering av fjernkontroll', price: 'Fra 350,- kr', description: 'Kopiering av eksisterende fjernkontroll' },
-  { name: 'Diagnostikk av bilnøkkel', price: '100,- kr', description: 'Diagnostikk av nøkkelproblemer' },
-];
 
 const CarKeyService = () => {
   const [searchTerm, setSearchTerm] = useState('')
+  const [cars, setCars] = useState<Car[]>([])
+  const [loading, setLoading] = useState(false)
 
-  const filteredServices = carKeyServices.filter(service =>
-    service.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    service.description?.toLowerCase().includes(searchTerm.toLowerCase())
-  )
+  // TODO: Implementere Firebase-henting
+  // const fetchCars = async () => {
+  //   // Henter biler fra Firebase 'cars' collection
+  // }
+
+  // TODO: Implementere søkefunksjonalitet
+  // const filteredCars = cars.filter(car => 
+  //   car.brand.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  //   car.model.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  //   car.keyTypes.some(type => type.toLowerCase().includes(searchTerm.toLowerCase()))
+  // )
 
   return (
     <div className='max-w-7xl mx-auto px-4 flex flex-col items-center'>
@@ -40,52 +39,20 @@ const CarKeyService = () => {
           page="bil-nokler"
         />
         
-        {/* Search Bar */}
+        {/* Søkefelt */}
         <div className="mb-4 w-full md:w-1/2">
           <input
             type="text"
-            placeholder="Søk her"
+            placeholder="Søk etter bilmerke, modell eller nøkkeltype"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
         </div>
 
-        {/* New text line */}
+        {/* Info-tekst */}
         <div className="mb-8 text-center text-gray-600 max-w-2xl">
           Om du ikke finner bilen din i listen er det bare til å ta kontakt, så skal vi se om vi kan lage den!
-        </div>
-
-        <div className="w-full md:w-1/2">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="text-left border-b-2">
-                <th className="py-2">Bil</th>
-                <th className="py-2">Pris</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredServices.map((service, index) => (
-                <tr key={index} className="border-b hover:bg-gray-50">
-                  <td className="py-2">
-                    <div>
-                      <div className="font-medium">{service.name}</div>
-                      {service.description && (
-                        <div className="text-sm text-gray-600">{service.description}</div>
-                      )}
-                    </div>
-                  </td>
-                  <td className="py-2">{service.price}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          
-          {filteredServices.length === 0 && (
-            <div className="text-center py-8 text-gray-500">
-              Ingen tjenester funnet for "{searchTerm}"
-            </div>
-          )}
         </div>
     </div>
   )
