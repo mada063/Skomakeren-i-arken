@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
-import { getFirestore } from 'firebase/firestore'
+import { getFirestore, collection, getDocs, query, where, orderBy, addDoc, updateDoc, doc, deleteDoc } from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -11,13 +11,89 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
 }
 
-// Initialize Firebase
+// Initialiserer Firebase
 const app = initializeApp(firebaseConfig)
 
-// Initialize Firebase Authentication and get a reference to the service
+// Setter opp Firebase Authentication
 export const auth = getAuth(app)
 
-// Initialize Cloud Firestore and get a reference to the service
+// Setter opp Cloud Firestore
 export const db = getFirestore(app)
+
+// Definerer hvordan en bil ser ut i databasen
+export interface Car {
+  id: string
+  brand: string
+  model: string
+  keyTypes: string[]
+  years: number[]
+}
+
+// Funksjoner for å jobbe med bilnøkkel-databasen
+export const carKeyDB = {
+  // Henter alle biler fra databasen
+  async getAllCars(): Promise<Car[]> {
+    const carsRef = collection(db, 'cars')
+    const snapshot = await getDocs(carsRef)
+    return snapshot.docs.map(doc => ({ 
+      id: doc.id, 
+      ...doc.data() 
+    })) as Car[]
+  },
+
+  // Henter biler etter merke
+  async getCarsByBrand(brand: string): Promise<Car[]> {
+    const carsRef = collection(db, 'cars')
+    const q = query(carsRef, where('brand', '==', brand), orderBy('model'))
+    const snapshot = await getDocs(q)
+    return snapshot.docs.map(doc => ({ 
+      id: doc.id, 
+      ...doc.data() 
+    })) as Car[]
+  },
+
+  // Henter biler etter modell
+  async getCarsByModel(model: string): Promise<Car[]> {
+    const carsRef = collection(db, 'cars')
+    const q = query(carsRef, where('model', '==', model))
+    const snapshot = await getDocs(q)
+    return snapshot.docs.map(doc => ({ 
+      id: doc.id, 
+      ...doc.data() 
+    })) as Car[]
+  },
+
+  // Henter alle unike bilmerker
+  async getUniqueBrands(): Promise<string[]> {
+    const carsRef = collection(db, 'cars')
+    const snapshot = await getDocs(carsRef)
+    const brands = new Set<string>()
+    
+    snapshot.docs.forEach(doc => {
+      const data = doc.data()
+      if (data.brand) {
+        brands.add(data.brand)
+      }
+    })
+    
+    return Array.from(brands).sort()
+  },
+
+  // Henter alle unike nøkkeltyper
+  async getUniqueKeyTypes(): Promise<string[]> {
+    const carsRef = collection(db, 'cars')
+    const snapshot = await getDocs(carsRef)
+    const keyTypes = new Set<string>()
+    
+    snapshot.docs.forEach(doc => {
+      const data = doc.data()
+      if (data.keyTypes && Array.isArray(data.keyTypes)) {
+        data.keyTypes.forEach((type: string) => keyTypes.add(type))
+      }
+    })
+    
+    return Array.from(keyTypes).sort()
+  }
+}
 
 export default app 

@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 type Segment = {
-  slug: string; // used for filtering by URL
+  slug: string; // brukes for å filtrere etter URL
   image: string;
   title: string;
   heading: string;

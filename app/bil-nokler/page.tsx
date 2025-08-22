@@ -1,12 +1,12 @@
 import BilNoklerLanding from "./components/BilNoklerLanding";
-import CarKeyService from "./components/CarKeyService";
+import CarKeySearch from "./components/CarKeySearch";
 
 export default function BilNokler() {
     return (
         <div>
             <BilNoklerLanding />
             <div id="services">
-                <CarKeyService />
+                <CarKeySearch />
             </div>
         </div>
     )

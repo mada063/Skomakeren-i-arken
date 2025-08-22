@@ -3,9 +3,9 @@ export default function LandingHero() {
     <div
       id="hero-section"
       className="min-h-screen bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/images/skomaker.jpg')" }}
+      style={{ backgroundImage: "url('/images/skomaker2.jpg')" }}
     >
-      <main className="flex flex-col items-center justify-center gap-8 text-center min-h-screen backdrop-brightness-75">
+      <main className="flex flex-col items-center justify-center gap-8 text-center min-h-screen">
         <h1 className="text-7xl font-semibold uppercase text-white">
           Skomakeren<br />i Arken
         </h1>
