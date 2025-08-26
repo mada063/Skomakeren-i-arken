@@ -65,21 +65,29 @@ export default function BilNoklerLanding() {
     if (searchTerm.trim()) {
       const searchLower = searchTerm.toLowerCase();
       filtered = carKeys.filter((car) => {
-        // Check brand and model
-        if (car.brand.toLowerCase().includes(searchLower)) return true;
-        if (car.model.toLowerCase().includes(searchLower)) return true;
+        // Check brand and model with null safety
+        if (car.brand && car.brand.toLowerCase().includes(searchLower))
+          return true;
+        if (car.model && car.model.toLowerCase().includes(searchLower))
+          return true;
 
-        // Check keyTypes (now it's a string, not array)
+        // Check keyTypes (handle both string and string[] types) with null safety
         if (
           car.keyTypes &&
-          Array.isArray(car.keyTypes) &&
-          car.keyTypes.join(" ").toLowerCase().includes(searchLower)
+          (
+            Array.isArray(car.keyTypes)
+              ? car.keyTypes.join(" ")
+              : car.keyTypes
+          )
+            .toLowerCase()
+            .includes(searchLower)
         )
           return true;
 
-        // Check years
+        // Check years with null safety
         if (
           car.years &&
+          Array.isArray(car.years) &&
           car.years.some((year) => year.toString().includes(searchTerm))
         )
           return true;
