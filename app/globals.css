@@ -13,7 +13,7 @@
   }
 
   body {
-    background: var(--color-custom-lightgray);
+    background: #F0F7FF;
     color: var(--color-custom-gray);
     font-family: 'Cormorant Garamond', serif;
   }
