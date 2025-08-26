@@ -209,7 +209,7 @@ export default function BilNoklerLanding() {
             <EditableText
               id="bilnokler-landing-title"
               defaultText="Bilnøkkel ekspertise"
-              className="text-4xl md:text-5xl lg:text-6xl uppercase font-bold text-center bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent"
+              className="text-4xl md:text-5xl lg:text-6xl uppercase font-bold text-center text-gray-900 dark:text-gray-100"
               tag="h2"
               page="bil-nokler"
             />
@@ -273,10 +273,10 @@ export default function BilNoklerLanding() {
                 <button
                   key={brand}
                   onClick={() => handleBrandSelect(brand)}
-                  className="px-5 py-4 border border-gray-200 dark:border-gray-600 rounded-xl hover:border-blue-400 dark:hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 font-medium text-lg transition-all duration-200 transform hover:-translate-y-0.5 shadow-sm hover:shadow-md"
+                  className="px-5 py-4 border border-gray-200 dark:border-gray-600 rounded-xl hover:border-blue-400 dark:hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 font-medium text-xl transition-all duration-200 transform hover:-translate-y-0.5 shadow-sm hover:shadow-md"
                 >
                   <span className="block truncate">{brand}</span>
-                  <span className="text-base text-blue-600 dark:text-blue-400 font-semibold">
+                  <span className="text-lg text-blue-600 dark:text-blue-400 font-semibold">
                     ({count})
                   </span>
                 </button>
