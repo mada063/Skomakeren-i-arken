@@ -217,7 +217,7 @@ export default function BilNoklerLanding() {
               <Image
                 src="/images/bil_ikon.png"
                 fill
-                className="object-contain"
+                className="object-contain dark:invert"
                 alt="Bilnøkkel ikon"
                 priority
               />
