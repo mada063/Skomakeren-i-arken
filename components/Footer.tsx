@@ -7,7 +7,7 @@ export default function Footer() {
         {/* Logo & Contact Info */}
         <div className="flex flex-col text-left">
           <img
-            src="/images/logo_svart.png"
+            src="/images/logo_hvit.png"
             alt="Logo"
             className="w-32 h-auto -ml-6 mb-4 dark:hidden"
           />
@@ -81,7 +81,7 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="/bilnokler"
+                href="/bil-nokler"
                 className="underline hover:text-gray-300 dark:hover:text-gray-400 text-white dark:text-gray-300"
               >
                 Bilnøkkler

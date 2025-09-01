@@ -78,7 +78,7 @@ const Header = () => {
             } ${
               isMenuOpen
                 ? shouldShowBlack
-                  ? "bg-gray-100 dark:bg-gray-800 rounded-bl-none rounded-br-none"
+                  ? "bg-white dark:bg-gray-800 rounded-bl-none rounded-br-none hover:bg-white"
                   : "bg-black/90 rounded-bl-none rounded-br-none"
                 : ""
             }`}
