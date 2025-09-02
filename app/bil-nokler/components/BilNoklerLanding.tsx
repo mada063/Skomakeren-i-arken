@@ -18,7 +18,7 @@ const BilNoklerLanding = () => {
               page="bil-nokler"
             />
             <Image
-              src="/images/gravering_ikon.png"
+              src="/images/bil_ikon.png"
               height={50}
               width={50}
               className="h-12 w-auto"
