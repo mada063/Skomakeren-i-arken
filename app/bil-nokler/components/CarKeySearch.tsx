@@ -8,11 +8,11 @@ import { carKeyDB, Car } from "@/lib/firebase";
 
 // Skeleton loader component for better perceived performance
 const CarCardSkeleton = () => (
-  <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 animate-pulse">
-    <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+  <div className="p-6 border border-gray-200 rounded-xl bg-white animate-pulse">
+    <div className="h-8 bg-gray-200 rounded mb-4"></div>
     <div className="space-y-3">
-      <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
-      <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded w-full"></div>
+      <div className="h-6 bg-gray-200 rounded w-3/4"></div>
+      <div className="h-10 bg-gray-200 rounded w-full"></div>
     </div>
   </div>
 );
@@ -160,7 +160,7 @@ export default function CarKeySearch() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from- dark:from-gray-700 dark:to-gray-600">
+    <div className="min-h-screen">
 
       <main className="max-w-7xl mx-auto px-4 py-8">
         {/* Search Section */}
@@ -171,11 +171,11 @@ export default function CarKeySearch() {
               placeholder="Søk etter bilmerke, modell, år eller nøkkeltype..."
               value={searchTerm}
               onChange={(e) => handleSearch(e.target.value)}
-              className="w-full px-6 py-5 pr-14 border border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-4 focus:ring-blue-100 dark:focus:ring-blue-900 focus:border-custom-blue dark:focus:border-blue-500 transition-all duration-200 text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 text-lg bg-white dark:bg-gray-800 shadow-sm hover:shadow-md"
+              className="w-full px-6 py-5 pr-14 border border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-custom-blue transition-all duration-200 text-gray-800 placeholder-gray-400 text-lg bg-white"
             />
             <div className="absolute inset-y-0 right-0 flex items-center pr-5 pointer-events-none">
               <svg
-                className="w-6 h-6 text-gray-400 dark:text-gray-500"
+                className="w-6 h-6 text-gray-400"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -191,7 +191,7 @@ export default function CarKeySearch() {
           </div>
 
           {searchTerm && (
-            <p className="mt-4 text-xl text-custom-gray dark:text-gray-400 text-center animate-fadeIn">
+            <p className="mt-4 text-xl text-custom-gray text-center animate-fadeIn">
               Fant {filteredCars.length}{" "}
               {filteredCars.length === 1 ? "bil" : "biler"}
             </p>
@@ -201,7 +201,7 @@ export default function CarKeySearch() {
         {/* Brand Selection */}
         {!searchTerm && !selectedBrand && (
           <div className="mb-10 animate-fadeIn">
-            <h3 className="text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-8 text-center">
+            <h3 className="text-2xl font-semibold text-gray-700 mb-8 text-center">
               Velg bilmerke:
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
@@ -209,10 +209,10 @@ export default function CarKeySearch() {
                 <button
                   key={brand}
                   onClick={() => handleBrandSelect(brand)}
-                  className="px-5 py-4 border border-gray-200 dark:border-gray-600 rounded-xl hover:border-custom-blue dark:hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 font-medium text-xl transition-all duration-200 transform hover:-translate-y-0.5 shadow-sm hover:shadow-md"
+                  className="px-5 py-4 border border-gray-200 rounded-xl hover:border-custom-blue hover:bg-blue-50 bg-white text-gray-800 font-medium text-xl transition-all duration-200 transform hover:-translate-y-0.5"
                 >
                   <span className="block truncate">{brand}</span>
-                  <span className="text-lg text-custom-blue dark:text-blue-400 font-semibold">
+                  <span className="text-lg text-custom-blue font-semibold">
                     ({count})
                   </span>
                 </button>
@@ -226,7 +226,7 @@ export default function CarKeySearch() {
           <div className="mb-8 animate-fadeIn">
             <button
               onClick={handleGoBack}
-              className="flex items-center text-custom-blue dark:text-blue-400 hover:text-custom-blue dark:hover:text-blue-300 font-medium mb-6 text-xl transition-colors duration-200 group"
+              className="flex items-center text-custom-blue hover:text-custom-blue font-medium mb-6 text-xl transition-colors duration-200 group"
             >
               <svg
                 className="w-6 h-6 mr-3 transition-transform duration-200 group-hover:-translate-x-1"
@@ -244,14 +244,14 @@ export default function CarKeySearch() {
               Tilbake til bilmerker
             </button>
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
-              <h3 className="text-3xl font-bold text-gray-800 dark:text-gray-200">
+              <h3 className="text-3xl font-bold text-gray-800">
                 {selectedBrand} modeller{" "}
-                <span className="text-custom-blue dark:text-blue-400">
+                <span className="text-custom-blue">
                   ({brandGroups[selectedBrand]?.length})
                 </span>
               </h3>
               <div className="flex items-center gap-4">
-                <span className="text-xl text-custom-gray dark:text-gray-400">
+                <span className="text-xl text-custom-gray">
                   Sorter:
                 </span>
                 <select
@@ -261,7 +261,7 @@ export default function CarKeySearch() {
                       e.target.value as "newest" | "oldest" | "alphabetical"
                     )
                   }
-                  className="px-5 py-3 border border-gray-300 dark:border-gray-600 rounded-xl text-lg bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-900 focus:border-custom-blue dark:focus:border-blue-500"
+                  className="px-5 py-3 border border-gray-300 rounded-xl text-lg bg-white text-gray-800 focus:ring-2 focus:ring-blue-100 focus:border-custom-blue"
                 >
                   <option value="newest">Nyeste modeller</option>
                   <option value="oldest">Eldste modeller</option>
@@ -287,9 +287,9 @@ export default function CarKeySearch() {
 
             {error && (
               <div className="col-span-full text-center py-12">
-                <div className="inline-flex items-center justify-center p-6 bg-red-50 dark:bg-red-900/20 rounded-xl border border-red-200 dark:border-red-800">
+                <div className="inline-flex items-center justify-center p-6 bg-red-50 rounded-xl border border-red-200">
                   <svg
-                    className="w-7 h-7 text-red-500 dark:text-red-400 mr-4"
+                    className="w-7 h-7 text-red-500 mr-4"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -301,7 +301,7 @@ export default function CarKeySearch() {
                       d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
-                  <p className="text-red-600 dark:text-red-400 text-xl">
+                  <p className="text-red-600 text-xl">
                     Feil: {error}
                   </p>
                 </div>
@@ -310,9 +310,9 @@ export default function CarKeySearch() {
 
             {!loading && !error && filteredCars.length === 0 && (
               <div className="col-span-full text-center py-12">
-                <div className="inline-flex flex-col items-center justify-center p-8 bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 max-w-md">
+                <div className="inline-flex flex-col items-center justify-center p-8 bg-white rounded-2xl border border-gray-200 max-w-md">
                   <svg
-                    className="w-14 h-14 text-custom-gray dark:text-gray-500 mb-6"
+                    className="w-14 h-14 text-custom-gray mb-6"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -324,7 +324,7 @@ export default function CarKeySearch() {
                       d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
-                  <p className="text-custom-gray dark:text-gray-400 text-xl">
+                  <p className="text-custom-gray text-xl">
                     {searchTerm
                       ? `Ingen biler funnet for "${searchTerm}"`
                       : "Ingen bilnøkler tilgjengelig"}
@@ -338,13 +338,13 @@ export default function CarKeySearch() {
               filteredCars.map((car) => (
                 <div
                   key={car.id}
-                  className="p-8 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 cursor-pointer transition-all duration-300 hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-lg transform hover:-translate-y-1 group"
+                  className="p-8 border border-gray-200 rounded-xl bg-white cursor-pointer transition-all duration-300 hover:border-blue-300 transform hover:-translate-y-1 group"
                 >
-                  <h4 className="font-bold text-2xl text-gray-900 dark:text-gray-100 mb-5 group-hover:text-custom-blue dark:group-hover:text-blue-400 transition-colors">
+                  <h4 className="font-bold text-2xl text-gray-900 mb-5 group-hover:text-custom-blue transition-colors">
                     {car.brand} {car.model}
                   </h4>
                   <div className="space-y-5">
-                    <div className="text-gray-700 dark:text-gray-300 text-xl">
+                    <div className="text-gray-700 text-xl">
                       <span className="font-medium">Årsmodell:</span>{" "}
                       {formatYearRange(car.years)}
                     </div>

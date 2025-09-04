@@ -9,23 +9,31 @@ const SkiltLanding = () => {
     <div className="max-w-7xl mx-auto px-4">
       <div className="flex flex-col justify-center min-h-screen">
         <div className="mb-16">
-          <div className="flex flex-row gap-6 items-center">
+        <EditableText 
+          id="skilt-category"
+          defaultText="Skilt"
+          className="mb-4 font-sans"
+          tag="p"
+          page="skilt"
+          component="SkiltLanding"
+        />
+          <div className="flex flex-row gap-6 items-center justify-between">
             <EditableText 
               id="skilt-landing-title"
-              defaultText="Skilt og merking"
+              defaultText="Flotte skilt"
               className="text-5xl md:text-7xl uppercase font-semibold"
               tag="h2"
               page="skilt"
             />
             <Image
               src="/images/skilt_ikon.png"
-              height={50}
-              width={50}
+              height={150}
+              width={150}
               className="h-12 w-auto"
               alt="Skilt ikon"
             />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+          <div className="w-1/2 mt-8">
             <div className="mt-4">
               <EditableText 
                 id="skilt-landing-heading"
@@ -36,7 +44,7 @@ const SkiltLanding = () => {
               />
               <EditableText 
                 id="skilt-landing-subheading"
-                defaultText="Bestill dørskilt, navneskilt og kontorskilt med rask levering og høy kvalitet."
+                defaultText="Bestill dørskilt, navneskilt og kontorskilt med rask levering og høy kvalitet. Vi lager blant annet postkasseskilt, dørskilt, navneskilt, hundemerker, hestegrimeskilt i plast messing og aluminium"
                 className="font-sans mt-4"
                 tag="p"
                 page="skilt"
@@ -45,12 +53,19 @@ const SkiltLanding = () => {
           </div>
         </div>
 
-        <div className="mt-8 flex justify-center md:justify-start">
+        <div className=" flex justify-center md:justify-start">
           <a
             href="#services"
             className="bg-custom-blue text-white px-6 py-3 rounded-lg transition-all duration-300 hover:bg-opacity-80 hover:scale-105 hover:shadow-lg w-fit"
           >
-            Se våre tjenester
+            <EditableText 
+              id="skilt-contact-button"
+              defaultText="Kontakt oss"
+              className="text-white"
+              tag="span"
+              page="skilt"
+              component="SkiltLanding"
+            />
           </a>
         </div>
       </div>
