@@ -29,20 +29,21 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Logg inn på din konto
-          </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
+    <div className="min-h-screen bg-custom-lightblue py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md mx-auto">
+        <div className="text-center mb-8">
+          <h1 className="font-cormorant text-4xl font-semibold text-custom-gray mb-2">
+            Logg inn
+          </h1>
+          <p className="font-inter text-custom-gray">
             For å få tilgang til redigeringsmodus
           </p>
         </div>
-        <form className="mt-8 space-y-6" onSubmit={handleLogin}>
-          <div className="rounded-md shadow-sm -space-y-px">
+        
+        <form className="space-y-6" onSubmit={handleLogin}>
+          <div className="space-y-4">
             <div>
-              <label htmlFor="email-address" className="sr-only">
+              <label htmlFor="email-address" className="block font-inter text-sm font-medium text-custom-gray mb-2">
                 E-postadresse
               </label>
               <input
@@ -51,14 +52,14 @@ export default function Login() {
                 type="email"
                 autoComplete="email"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="E-postadresse"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent font-inter text-gray-900 placeholder-gray-500"
+                placeholder="Din e-postadresse"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div>
-              <label htmlFor="password" className="sr-only">
+              <label htmlFor="password" className="block font-inter text-sm font-medium text-gray-700 mb-2">
                 Passord
               </label>
               <input
@@ -67,8 +68,8 @@ export default function Login() {
                 type="password"
                 autoComplete="current-password"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Passord"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent font-inter text-gray-900 placeholder-gray-500"
+                placeholder="Ditt passord"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -76,20 +77,20 @@ export default function Login() {
           </div>
 
           {error && (
-            <div className="text-red-600 text-sm text-center">
-              {error}
+            <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+              <p className="text-red-600 text-sm font-inter text-center">
+                {error}
+              </p>
             </div>
           )}
 
-          <div>
-            <button
-              type="submit"
-              disabled={loading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {loading ? 'Logger inn...' : 'Logg inn'}
-            </button>
-          </div>
+          <button
+            type="submit"
+            disabled={loading}
+            className="bg-custom-blue text-white px-6 py-3 rounded-lg transition-all duration-300 hover:bg-opacity-80 hover:scale-105 hover:shadow-lg inline-block"
+          >
+            {loading ? 'Logger inn...' : 'Logg inn'}
+          </button>
         </form>
       </div>
     </div>

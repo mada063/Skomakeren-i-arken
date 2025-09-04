@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { useAuth } from '@/contexts/AuthContext'
-import { doc, getDoc, updateDoc } from 'firebase/firestore'
-import { db } from '@/lib/firebase'
+import { contentCache } from '@/lib/contentCache'
 
 interface EditableTextProps {
   id: string
@@ -11,6 +10,7 @@ interface EditableTextProps {
   className?: string
   tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span'
   page: string
+  component?: string
 }
 
 const EditableText: React.FC<EditableTextProps> = ({
@@ -18,12 +18,14 @@ const EditableText: React.FC<EditableTextProps> = ({
   defaultText,
   className = '',
   tag = 'p',
-  page
+  page,
+  component
 }) => {
   const { user } = useAuth()
-  const [text, setText] = useState(defaultText)
+  const [text, setText] = useState('')
   const [isEditing, setIsEditing] = useState(false)
   const [saving, setSaving] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     loadContent()
@@ -31,18 +33,31 @@ const EditableText: React.FC<EditableTextProps> = ({
 
   const loadContent = async () => {
     try {
-      const contentDoc = doc(db, 'content', 'main')
-      const contentSnap = await getDoc(contentDoc)
+      // First check cache
+      const cachedContent = contentCache.get(id)
+      if (cachedContent) {
+        setText(cachedContent.content)
+        setIsLoading(false)
+        return
+      }
+
+      // If not in cache, load from Firebase and cache it
+      await contentCache.loadPageFromFirebase(page)
       
-      if (contentSnap.exists()) {
-        const data = contentSnap.data()
-        const content = data.contents?.find((item: any) => item.id === id)
-        if (content) {
-          setText(content.content)
-        }
+      // Check cache again after loading
+      const newlyCachedContent = contentCache.get(id)
+      if (newlyCachedContent) {
+        setText(newlyCachedContent.content)
+      } else {
+        // If still not found, use default text
+        setText(defaultText)
       }
     } catch (error) {
       console.error('Error loading content:', error)
+      // On error, fall back to default text
+      setText(defaultText)
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -52,37 +67,25 @@ const EditableText: React.FC<EditableTextProps> = ({
     setSaving(true)
     
     try {
-      const contentDoc = doc(db, 'content', 'main')
-      const contentSnap = await getDoc(contentDoc)
-      
-      let contents = []
-      if (contentSnap.exists()) {
-        contents = contentSnap.data().contents || []
-      }
-      
-      const existingIndex = contents.findIndex((item: any) => item.id === id)
+      // Update cache immediately (instant UI update)
       const contentItem = {
         id,
         title: `${page} - ${id}`,
         content: text,
-        page
-      }
-      
-      if (existingIndex >= 0) {
-        contents[existingIndex] = contentItem
-      } else {
-        contents.push(contentItem)
-      }
-      
-      await updateDoc(contentDoc, {
-        contents,
+        page,
         lastUpdated: new Date(),
-        updatedBy: user.email
-      })
+        ...(component && { component }) // Only include component if it exists
+      }
       
+      contentCache.set(id, contentItem)
+      
+      // Update local state immediately
+      setText(text)
       setIsEditing(false)
     } catch (error) {
       console.error('Error saving content:', error)
+      // Revert text on error
+      setText(defaultText)
     } finally {
       setSaving(false)
     }
@@ -100,6 +103,36 @@ const EditableText: React.FC<EditableTextProps> = ({
   }
 
   const renderText = () => {
+    // Show loading state while content is being loaded
+    if (isLoading) {
+      const loadingProps = {
+        className: `${className} shadow-lg rounded-lg animate-pulse`,
+        style: { 
+          minHeight: tag.startsWith('h') ? '2em' : '1.5em',
+          width: tag.startsWith('h') ? '60%' : '80%'
+        }
+      }
+      
+      switch (tag) {
+        case 'h1':
+          return <h1 {...loadingProps}></h1>
+        case 'h2':
+          return <h2 {...loadingProps}></h2>
+        case 'h3':
+          return <h3 {...loadingProps}></h3>
+        case 'h4':
+          return <h4 {...loadingProps}></h4>
+        case 'h5':
+          return <h5 {...loadingProps}></h5>
+        case 'h6':
+          return <h6 {...loadingProps}></h6>
+        case 'span':
+          return <span {...loadingProps}></span>
+        default:
+          return <p {...loadingProps}></p>
+      }
+    }
+
     const commonProps = {
       className: `${className} ${user ? 'cursor-pointer hover:bg-yellow-100 hover:bg-opacity-50 rounded px-1' : ''}`,
       onClick: user ? () => setIsEditing(true) : undefined,

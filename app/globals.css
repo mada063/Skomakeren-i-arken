@@ -7,13 +7,14 @@
 @layer base {
   :root {
     --color-custom-blue: #7199CC;
+    --color-custom-lightblue: #F0F7FF;
     --color-custom-gray: #464646;
     --color-custom-lightgray: #F3F3F3;
     --color-custom-brown: #C29D74;
   }
 
   body {
-    background: #F0F7FF;
+    background: var(--color-custom-lightblue);
     color: var(--color-custom-gray);
     font-family: 'Cormorant Garamond', serif;
   }
@@ -21,12 +22,20 @@
 
 @layer utilities {
   .bg-custom-blue { background-color: var(--color-custom-blue); }
+  .bg-custom-lightblue { background-color: var(--color-custom-lightblue); }
   .bg-custom-gray { background-color: var(--color-custom-gray); }
   .bg-custom-lightgray { background-color: var(--color-custom-lightgray); }
   .bg-custom-brown { background-color: var(--color-custom-brown); }
 
   .text-custom-blue { color: var(--color-custom-blue); }
+  .text-custom-lightblue { color: var(--color-custom-lightblue); }
   .text-custom-gray { color: var(--color-custom-gray); }
   .text-custom-lightgray { color: var(--color-custom-lightgray); }
   .text-custom-brown { color: var(--color-custom-brown); }
+
+  .border-custom-blue { border-color: var(--color-custom-blue); }
+  .border-custom-lightblue { border-color: var(--color-custom-lightblue); }
+  .border-custom-gray { border-color: var(--color-custom-gray); }
+  .border-custom-lightgray { border-color: var(--color-custom-lightgray); }
+  .border-custom-brown { border-color: var(--color-custom-brown); }
 }
