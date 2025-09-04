@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="bg-custom-brown text-white py-12 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-        {/* Logo & Contact Info */}
+        {/* Logo & Kontaktinfo */}
         <div className="flex flex-col text-left">
           <img
             src="/images/logo_hvit.png"
@@ -28,7 +28,7 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Meny Section */}
+        {/* Menyseksjon */}
         <div className="flex flex-col text-left">
           <h4 className="font-semibold text-lg mb-3 uppercase text-white">
             Meny
@@ -93,7 +93,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Useful Section */}
+        {/* Nyttig seksjon */}
         <div className="flex flex-col text-left">
           <h4 className="font-semibold text-lg mb-3 uppercase text-white">
             Nyttige

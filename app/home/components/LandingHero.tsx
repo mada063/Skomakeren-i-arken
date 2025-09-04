@@ -11,7 +11,7 @@ export default function LandingHero() {
         />
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
         
-        {/* Text and button positioned at the bottom */}
+        {/* Tekst og knapp plassert nederst */}
         <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center justify-center gap-8 text-center pb-16">
           <h4 className="text-lg md:text-4xl uppercase text-white px-4">
             Åsane senter, Bygg B

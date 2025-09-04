@@ -50,7 +50,7 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link href="/" className="relative w-24 h-24">
-          {/* Show white logo on homepage hero, otherwise show black logo */}
+          {/* Vis hvit logo på hjemmeside hero, ellers vis svart logo */}
           {!shouldShowBlack ? (
             <Image
               src="/images/logo_hvit.png"
@@ -71,7 +71,7 @@ const Header = () => {
         </Link>
 
         <div className="flex items-center gap-2">
-          {/* Logout button - only show when user is logged in */}
+          {/* Logg ut knapp - vis kun når bruker er logget inn */}
           {user && (
             <button
               onClick={handleLogout}
@@ -100,7 +100,7 @@ const Header = () => {
             </button>
           )}
 
-          {/* Menu button */}
+          {/* Meny knapp */}
           <div className="relative">
             <button
               className={`p-2 transition-colors rounded-lg ${
@@ -133,7 +133,7 @@ const Header = () => {
               </svg>
             </button>
 
-          {/* Menu Dropdown */}
+          {/* Meny Dropdown */}
           {isMenuOpen && (
             <div
               className={`absolute right-0 w-64 rounded-lg rounded-tr-none transition-colors shadow-lg py-2 ${

@@ -1,4 +1,3 @@
-// app/components/TextSection.tsx
 "use client";
 
 import React from 'react';

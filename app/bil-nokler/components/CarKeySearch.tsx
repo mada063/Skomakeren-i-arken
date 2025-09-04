@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import EditableText from "@/components/EditableText";
 import { carKeyDB, Car } from "@/lib/firebase";
 
-// Skeleton loader component for better perceived performance
+// Skeleton loader komponent for bedre opplevd ytelse
 const CarCardSkeleton = () => (
   <div className="p-6 border border-gray-200 rounded-xl bg-white animate-pulse">
     <div className="h-8 bg-gray-200 rounded mb-4"></div>
@@ -17,7 +17,7 @@ const CarCardSkeleton = () => (
   </div>
 );
 
-// Main component
+// Hovedkomponent
 export default function CarKeySearch() {
   const [carKeys, setCarKeys] = useState<Car[]>([]);
   const [loading, setLoading] = useState(true);
@@ -30,11 +30,11 @@ export default function CarKeySearch() {
 
   const router = useRouter();
 
-  // Fetch data with optimized loading
+  // Henter data med optimalisert lasting
   useEffect(() => {
     const fetchCarKeys = async () => {
       try {
-        // Small timeout to ensure smooth animation even if data loads quickly
+        // Kort timeout for å sikre jevn animasjon selv om data laster raskt
         await new Promise((resolve) => setTimeout(resolve, 300));
         const cars = await carKeyDB.getAllCars();
         setCarKeys(cars);
@@ -48,7 +48,7 @@ export default function CarKeySearch() {
     fetchCarKeys();
   }, []);
 
-  // Memoized data processing for performance
+  // Memoized databehandling for ytelse
   const brandGroups = useMemo(() => {
     const groups: Record<string, Car[]> = {};
     carKeys.forEach((car) => {
@@ -75,15 +75,15 @@ export default function CarKeySearch() {
     if (searchTerm.trim()) {
       const searchTerms = searchTerm.toLowerCase().trim().split(/\s+/);
       filtered = carKeys.filter((car) => {
-        // Check if ALL search terms are found in the car data
+        // Sjekk om ALLE søkeord finnes i bildata
         return searchTerms.every(term => {
-          // Check brand
+          // Sjekk merke
           if (car.brand && car.brand.toLowerCase().includes(term)) return true;
           
-          // Check model
+          // Sjekk modell
           if (car.model && car.model.toLowerCase().includes(term)) return true;
           
-          // Check key types
+          // Sjekk nøkkeltyper
           if (car.keyTypes) {
             const keyTypesStr = Array.isArray(car.keyTypes) 
               ? car.keyTypes.join(" ") 
@@ -91,7 +91,7 @@ export default function CarKeySearch() {
             if (keyTypesStr.toLowerCase().includes(term)) return true;
           }
           
-          // Check years
+          // Sjekk år
           if (car.years && Array.isArray(car.years)) {
             if (car.years.some(year => year.toString().includes(term))) return true;
           }
@@ -120,14 +120,14 @@ export default function CarKeySearch() {
     });
   }, [carKeys, searchTerm, selectedBrand, brandGroups, sortOrder]);
 
-  // Event handlers with useCallback
+  // Event handlers med useCallback
   const formatYearRange = useCallback((years: any[]) => {
     if (!years || years.length === 0) return "";
     
-    // Check if "Latest" is present
+    // Sjekk om "Latest" er til stede
     const hasLatest = years.some(year => year === "Latest" || year === "latest");
     
-    // Filter out non-numeric values and convert to numbers
+    // Filtrer ut ikke-numeriske verdier og konverter til tall
     const numericYears = years
       .filter(year => typeof year === 'number' && !isNaN(year))
       .map(year => Number(year));
@@ -163,7 +163,7 @@ export default function CarKeySearch() {
     <div className="min-h-screen">
 
       <main className="max-w-7xl mx-auto px-4 py-8">
-        {/* Search Section */}
+        {/* Søkeseksjon */}
         <div className="mb-10">
           <div className="relative max-w-2xl mx-auto">
             <input
@@ -198,7 +198,7 @@ export default function CarKeySearch() {
           )}
         </div>
 
-        {/* Brand Selection */}
+        {/* Merkevalg */}
         {!searchTerm && !selectedBrand && (
           <div className="mb-10 animate-fadeIn">
             <h3 className="text-2xl font-semibold text-gray-700 mb-8 text-center">
@@ -221,7 +221,7 @@ export default function CarKeySearch() {
           </div>
         )}
 
-        {/* Selected Brand Header */}
+        {/* Valgt merke header */}
         {selectedBrand && !searchTerm && (
           <div className="mb-8 animate-fadeIn">
             <button
@@ -274,7 +274,7 @@ export default function CarKeySearch() {
 
         
 
-        {/* Results Grid */}
+        {/* Resultatrutenett */}
         {(searchTerm || selectedBrand) && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
             {loading && (
@@ -357,7 +357,7 @@ export default function CarKeySearch() {
        
       </main>
 
-      {/* Global styles for animations */}
+      {/* Globale stiler for animasjoner */}
       <style jsx global>{`
         @keyframes fadeIn {
           from {

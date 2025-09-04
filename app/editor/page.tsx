@@ -1026,7 +1026,7 @@ const Editor = () => {
           )}
         </div>
 
-        {/* Content Editor */}
+        {/* Innholdsredigerer */}
         <div className="bg-white rounded-lg shadow-sm">
           {(() => {
             // Group contents by page
@@ -1051,7 +1051,7 @@ const Editor = () => {
 
             return (
               <>
-                {/* Tabs */}
+                {/* Faner */}
                 <div className="border-b border-gray-200">
                   <nav className="-mb-px flex space-x-8 px-6">
                     {pages.map((page) => (
@@ -1070,7 +1070,7 @@ const Editor = () => {
                   </nav>
                 </div>
 
-                {/* Tab Content */}
+                {/* Faneinnhold */}
                 <div className="p-6">
                   {activeTab && groupedContents[activeTab] && (() => {
                     const pageContents = groupedContents[activeTab]
