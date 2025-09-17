@@ -162,20 +162,20 @@ export default function CarKeySearch() {
   return (
     <div className="min-h-screen">
 
-      <main className="max-w-7xl mx-auto px-4 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         {/* Søkeseksjon */}
         <div className="mb-10">
-          <div className="relative max-w-2xl mx-auto">
+          <div className="relative max-w-xl sm:max-w-2xl mx-auto">
             <input
               type="text"
               placeholder="Søk etter bilmerke, modell, år eller nøkkeltype..."
               value={searchTerm}
               onChange={(e) => handleSearch(e.target.value)}
-              className="w-full px-6 py-5 pr-14 border border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-custom-blue transition-all duration-200 text-gray-800 placeholder-gray-400 text-lg bg-white"
+              className="w-full px-4 sm:px-6 py-4 sm:py-5 pr-12 sm:pr-14 border border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-custom-blue transition-all duration-200 text-gray-800 placeholder-gray-400 text-base sm:text-lg bg-white"
             />
             <div className="absolute inset-y-0 right-0 flex items-center pr-5 pointer-events-none">
               <svg
-                className="w-6 h-6 text-gray-400"
+                className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -191,7 +191,7 @@ export default function CarKeySearch() {
           </div>
 
           {searchTerm && (
-            <p className="mt-4 text-xl text-custom-gray text-center animate-fadeIn">
+            <p className="mt-3 sm:mt-4 text-lg sm:text-xl text-custom-gray text-center animate-fadeIn">
               Fant {filteredCars.length}{" "}
               {filteredCars.length === 1 ? "bil" : "biler"}
             </p>
@@ -200,19 +200,19 @@ export default function CarKeySearch() {
 
         {/* Merkevalg */}
         {!searchTerm && !selectedBrand && (
-          <div className="mb-10 animate-fadeIn">
-            <h3 className="text-2xl font-semibold text-gray-700 mb-8 text-center">
+          <div className="mb-8 sm:mb-10 animate-fadeIn">
+            <h3 className="text-xl sm:text-2xl font-semibold text-gray-700 mb-6 sm:mb-8 text-center">
               Velg bilmerke:
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
               {brandsWithCounts.map(({ brand, count }) => (
                 <button
                   key={brand}
                   onClick={() => handleBrandSelect(brand)}
-                  className="px-5 py-4 border border-gray-200 rounded-xl hover:border-custom-blue hover:bg-blue-50 bg-white text-gray-800 font-medium text-xl transition-all duration-200 transform hover:-translate-y-0.5"
+                  className="px-4 sm:px-5 py-3 sm:py-4 border border-gray-200 rounded-xl hover:border-custom-blue hover:bg-blue-50 bg-white text-gray-800 font-medium text-lg sm:text-xl transition-all duration-200 transform hover:-translate-y-0.5"
                 >
                   <span className="block truncate">{brand}</span>
-                  <span className="text-lg text-custom-blue font-semibold">
+                  <span className="text-base sm:text-lg text-custom-blue font-semibold">
                     ({count})
                   </span>
                 </button>
@@ -223,13 +223,13 @@ export default function CarKeySearch() {
 
         {/* Valgt merke header */}
         {selectedBrand && !searchTerm && (
-          <div className="mb-8 animate-fadeIn">
+          <div className="mb-6 sm:mb-8 animate-fadeIn">
             <button
               onClick={handleGoBack}
-              className="flex items-center text-custom-blue hover:text-custom-blue font-medium mb-6 text-xl transition-colors duration-200 group"
+              className="flex items-center text-custom-blue hover:text-custom-blue font-medium mb-4 sm:mb-6 text-lg sm:text-xl transition-colors duration-200 group"
             >
               <svg
-                className="w-6 h-6 mr-3 transition-transform duration-200 group-hover:-translate-x-1"
+                className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3 transition-transform duration-200 group-hover:-translate-x-1"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -243,15 +243,15 @@ export default function CarKeySearch() {
               </svg>
               Tilbake til bilmerker
             </button>
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
-              <h3 className="text-3xl font-bold text-gray-800">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-6">
+              <h3 className="text-2xl sm:text-3xl font-bold text-gray-800">
                 {selectedBrand} modeller{" "}
                 <span className="text-custom-blue">
                   ({brandGroups[selectedBrand]?.length})
                 </span>
               </h3>
-              <div className="flex items-center gap-4">
-                <span className="text-xl text-custom-gray">
+              <div className="flex items-center gap-3 sm:gap-4">
+                <span className="text-lg sm:text-xl text-custom-gray">
                   Sorter:
                 </span>
                 <select
@@ -261,7 +261,7 @@ export default function CarKeySearch() {
                       e.target.value as "newest" | "oldest" | "alphabetical"
                     )
                   }
-                  className="px-5 py-3 border border-gray-300 rounded-xl text-lg bg-white text-gray-800 focus:ring-2 focus:ring-blue-100 focus:border-custom-blue"
+                  className="px-4 sm:px-5 py-2.5 sm:py-3 border border-gray-300 rounded-xl text-base sm:text-lg bg-white text-gray-800 focus:ring-2 focus:ring-blue-100 focus:border-custom-blue"
                 >
                   <option value="newest">Nyeste modeller</option>
                   <option value="oldest">Eldste modeller</option>
@@ -276,7 +276,7 @@ export default function CarKeySearch() {
 
         {/* Resultatrutenett */}
         {(searchTerm || selectedBrand) && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 sm:gap-6">
             {loading && (
               <>
                 {Array.from({ length: 8 }).map((_, i) => (
@@ -338,13 +338,13 @@ export default function CarKeySearch() {
               filteredCars.map((car) => (
                 <div
                   key={car.id}
-                  className="p-8 border border-gray-200 rounded-xl bg-white cursor-pointer transition-all duration-300 hover:border-blue-300 transform hover:-translate-y-1 group"
+                  className="p-6 sm:p-8 border border-gray-200 rounded-xl bg-white cursor-pointer transition-all duration-300 hover:border-blue-300 transform hover:-translate-y-1 group"
                 >
-                  <h4 className="font-bold text-2xl text-gray-900 mb-5 group-hover:text-custom-blue transition-colors">
+                  <h4 className="font-bold text-xl sm:text-2xl text-gray-900 mb-4 sm:mb-5 group-hover:text-custom-blue transition-colors">
                     {car.brand} {car.model}
                   </h4>
                   <div className="space-y-5">
-                    <div className="text-gray-700 text-xl">
+                    <div className="text-gray-700 text-lg sm:text-xl">
                       <span className="font-medium">Årsmodell:</span>{" "}
                       {formatYearRange(car.years)}
                     </div>

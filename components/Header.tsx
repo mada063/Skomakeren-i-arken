@@ -48,8 +48,8 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="relative w-24 h-24">
+      <div className="container mx-auto px-4 py-2 sm:py-4 flex justify-between items-center">
+        <Link href="/" className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24">
           {/* Vis hvit logo på hjemmeside hero, ellers vis svart logo */}
           {!shouldShowBlack ? (
             <Image
@@ -70,12 +70,12 @@ const Header = () => {
           )}
         </Link>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
           {/* Logg ut knapp - vis kun når bruker er logget inn */}
           {user && (
             <button
               onClick={handleLogout}
-              className={`p-2 transition-colors rounded-lg ${
+              className={`p-1.5 sm:p-2 transition-colors rounded-lg ${
                 shouldShowBlack
                   ? "text-gray-900 hover:bg-red-200 active:bg-red-200"
                   : "text-white hover:bg-black/90 active:bg-black/90"
@@ -89,7 +89,7 @@ const Header = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="w-5 h-5 sm:w-6 sm:h-6"
               >
                 <path
                   strokeLinecap="round"
@@ -103,7 +103,7 @@ const Header = () => {
           {/* Meny knapp */}
           <div className="relative">
             <button
-              className={`p-2 transition-colors rounded-lg ${
+              className={`p-1.5 sm:p-2 transition-colors rounded-lg ${
                 shouldShowBlack
                   ? "text-gray-900 hover:bg-gray-200 active:bg-gray-200"
                   : "text-white hover:bg-black/90 active:bg-black/90"
@@ -123,7 +123,7 @@ const Header = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-8 h-8"
+                className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8"
               >
                 <path
                   strokeLinecap="round"
@@ -136,7 +136,7 @@ const Header = () => {
           {/* Meny Dropdown */}
           {isMenuOpen && (
             <div
-              className={`absolute right-0 w-64 rounded-lg rounded-tr-none transition-colors shadow-lg py-2 ${
+              className={`absolute right-0 w-56 sm:w-64 rounded-lg rounded-tr-none transition-colors shadow-lg py-2 ${
                 shouldShowBlack
                   ? "bg-white text-gray-900"
                   : "bg-black/90 text-white"
@@ -175,12 +175,12 @@ const Header = () => {
                   </li>
                   <li>
                     <Link href="/nokler" className="block hover:opacity-70">
-                      Nøkkler
+                      Nøkler
                     </Link>
                   </li>
                   <li>
                     <Link href="/bil-nokler" className="block hover:opacity-70">
-                      Bilnøkkler
+                      Bilnøkler
                     </Link>
                   </li>
                 </ul>

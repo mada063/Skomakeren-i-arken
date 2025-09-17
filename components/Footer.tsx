@@ -2,14 +2,14 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="bg-custom-brown text-white py-12 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+    <footer className="bg-custom-brown text-white py-8 sm:py-12 transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12 text-center sm:text-left">
         {/* Logo & Kontaktinfo */}
-        <div className="flex flex-col text-left">
+        <div className="flex flex-col text-center sm:text-left">
           <img
             src="/images/logo_hvit.png"
             alt="Logo"
-            className="w-32 h-auto -ml-6 mb-4"
+            className="w-24 sm:w-32 h-auto mx-auto sm:mx-0 sm:-ml-6 mb-4"
           />
           <h2 className="font-semibold text-lg text-white">
             SKOMAKEREN I ARKEN v/Helshani
@@ -29,7 +29,7 @@ export default function Footer() {
         </div>
 
         {/* Menyseksjon */}
-        <div className="flex flex-col text-left">
+        <div className="flex flex-col text-center sm:text-left">
           <h4 className="font-semibold text-lg mb-3 uppercase text-white">
             Meny
           </h4>
@@ -94,7 +94,7 @@ export default function Footer() {
         </div>
 
         {/* Nyttig seksjon */}
-        <div className="flex flex-col text-left">
+        <div className="flex flex-col text-center sm:text-left sm:col-span-2 lg:col-span-1">
           <h4 className="font-semibold text-lg mb-3 uppercase text-white">
             Nyttige
           </h4>

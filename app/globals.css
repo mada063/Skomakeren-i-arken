@@ -13,10 +13,40 @@
     --color-custom-brown: #C29D74;
   }
 
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background: var(--color-custom-lightblue);
     color: var(--color-custom-gray);
     font-family: 'Cormorant Garamond', serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Respect device safe areas */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Mobile-specific optimizations */
+  @media (max-width: 640px) {
+    body {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    img, svg, video, canvas {
+      max-width: 100%;
+      height: auto;
+    }
+    /* Improve tap targets and scrolling */
+    a, button {
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+    }
   }
 }
 

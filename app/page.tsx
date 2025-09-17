@@ -9,11 +9,11 @@ export default function Home() {
   return (
     <>
     <LandingHero />
+    <Openings />
     <TextSection />
     <InfoSection />
     <HomeBreak />
     <WhoHome />
-    <Openings />
     </>
   );
 }
