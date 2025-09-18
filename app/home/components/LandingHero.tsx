@@ -1,6 +1,7 @@
 "use client";
 
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
+import Image from 'next/image';
 
 export default function LandingHero() {
   const { ref: heroRef, isIntersecting: heroVisible } = useIntersectionObserver({
@@ -19,14 +20,18 @@ export default function LandingHero() {
         <div className="absolute inset-0 bg-custom-brown"></div>
         <div 
           ref={heroRef}
-          className={`absolute inset-0 bg-cover bg-no-repeat transition-all duration-1000 ${
+          className={`absolute inset-0 transition-all duration-1000 ${
             heroVisible ? 'animate-zoom-in-view' : 'animate-hidden'
           }`}
-          style={{ 
-            backgroundImage: "url('/images/skomaker2.jpg')",
-            backgroundPosition: "center 70%"
-          }}
-        />
+        >
+          <Image 
+            src="/images/skomaker2.jpg"
+            alt="Skomakeren i Arken"
+            fill
+            priority
+            className="object-cover object-center scale-[1.5] md:scale-100 origin-center"
+          />
+        </div>
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
         
         {/* Sentrert på mobil, nederst på desktop */}

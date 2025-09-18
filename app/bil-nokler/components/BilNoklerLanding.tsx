@@ -34,7 +34,7 @@ const BilNoklerLanding = () => {
           <EditableText 
             id="bilnokler-category"
             defaultText="Bilnøkler"
-            className="mb-4 font-sans text-center sm:text-left"
+            className="mb-4 font-sans"
             tag="p"
             page="bil-nokler"
             component="BilNoklerLanding"
@@ -50,7 +50,7 @@ const BilNoklerLanding = () => {
               <EditableText 
                 id="bilnokler-landing-title"
                 defaultText="Bilnøkkel ekspertise"
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl uppercase font-semibold max-w-3xl text-center sm:text-left"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl uppercase font-semibold max-w-3xl"
                 tag="h2"
                 page="bil-nokler"
               />
@@ -73,14 +73,14 @@ const BilNoklerLanding = () => {
               <EditableText 
                 id="bilnokler-landing-heading"
                 defaultText="Profesjonell bilnøkkel service"
-                className="font-semibold text-xl sm:text-2xl md:text-3xl mt-3 sm:mt-4 text-center sm:text-left"
+                className="font-semibold text-xl sm:text-2xl md:text-3xl mt-3 sm:mt-4"
                 tag="h4"
                 page="bil-nokler"
               />
               <EditableText 
                 id="bilnokler-landing-subheading"
                 defaultText="Vi programmerer og kopierer bilnøkler for alle merker. Rask service og kvalitetsgaranti."
-                className="font-sans mt-3 sm:mt-4 text-base sm:text-lg md:text-xl text-center sm:text-left"
+                className="font-sans mt-3 sm:mt-4 text-base sm:text-lg md:text-xl"
                 tag="p"
                 page="bil-nokler"
               />
